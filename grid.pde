@@ -5,7 +5,7 @@ PImage img;
 
 void setup(){
 size (800,800);
-img = loadImage("sea.png");
+img = loadImage("sea.jpg");
 background(img);
 Drawgrid();
 }
