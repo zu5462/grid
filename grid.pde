@@ -1,12 +1,16 @@
 /* @pjs preload="sea.jpg"; */  
+/* @pjs preload="sub.png"; */  
 
 int grid = 50; // change this number to 20 or 50, etc., if you want fewer grid lines
 int fontsize =16;
-
+int MX;
+int MY;
 PImage img;
+PImage sub;
 
 void setup(){
 img = loadImage("sea.jpg");
+sub = loadImage("sub.png");
 
 size (800,800);
 background(img);
@@ -14,6 +18,9 @@ Drawgrid();
 }
 
 void draw(){
+ MX=mouseX/grid*grid;
+ MY=mouseY/grid*grid;
+
 if(keyPressed){
   if(key=='r'||key=='R'){
  reset();
@@ -37,18 +44,18 @@ Drawgrid();
 }
 
 void drawO(){
-  fill(255);
+    imageMode(CENTER);
     if(mouseX%grid>=grid/2){
       if(mouseY%grid>=grid/2){
-      text("O",mouseX/grid*grid+grid-fontsize,mouseY/grid*grid+grid+fontsize);
+      image(sub,MX+grid,MY+grid);
     }else{
-      text("O",mouseX/grid*grid+grid-fontsize,mouseY/grid*grid+fontsize);
+      image(sub,MX+grid,MY);
     } 
     }else{
     if(mouseY%grid>=grid/2){
-      text("O",mouseX/grid*grid-fontsize,mouseY/grid*grid+grid+fontsize);
+      image(sub,MX,MY+grid);
     }else{
-      text("O",mouseX/grid*grid-fontsize,mouseY/grid*grid+fontsize);
+      image(sub,MX,MY);
     }
      }
    
@@ -57,17 +64,18 @@ void drawO(){
 void drawX(){
   fill(255);
   textSize(fontsize*2);
+  textAlign(CENTER,CENTER);
   if(mouseX%grid>=grid/2){
     if(mouseY%grid>=grid/2){
-      text("X",mouseX/grid*grid+grid-fontsize,mouseY/grid*grid+grid+fontsize);
+      text("X",MX+grid,MY+grid);
     }else{
-      text("X",mouseX/grid*grid+grid-fontsize,mouseY/grid*grid+fontsize);
+      text("X",MX+grid,MY);
     } 
   }else{
     if(mouseY%grid>=grid/2){
-      text("X",mouseX/grid*grid-fontsize,mouseY/grid*grid+grid+fontsize);
+      text("X",MX,MY+grid);
     }else{
-      text("X",mouseX/grid*grid-fontsize,mouseY/grid*grid+fontsize);
+      text("X",MX,MY);
     }
   }
 }
