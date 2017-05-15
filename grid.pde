@@ -4,22 +4,35 @@ int fontsize =16;
 PImage img;
 
 void setup(){
-size (800,800);
 img = loadImage("sea.jpg");
+
+size (800,800);
 background(img);
 Drawgrid();
 }
 
 void draw(){
-if (mousePressed && (mouseButton == LEFT)){
+if(keyPressed){
+  if(key=='r'||key=='R'){
+ reset();
+  }
+}
+
+}
+
+void mouseReleased(){
+  if (mouseButton == LEFT){
  drawX(); 
-}else if (mousePressed && (mouseButton == RIGHT)){
+}else if (mouseButton == RIGHT){
 drawO();
 }
-
 }
 
-
+void reset(){
+img = loadImage("sea.jpg");
+background(img);
+Drawgrid();
+}
 
 void drawO(){
   fill(255);
