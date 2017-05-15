@@ -1,3 +1,5 @@
+/* @pjs preload="picture.jpg"; */  
+
 int grid = 50; // change this number to 20 or 50, etc., if you want fewer grid lines
 int fontsize =16;
 
